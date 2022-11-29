@@ -5,8 +5,9 @@ Version: 0.1.0
 Authors@R: c(
     person("Jacob", "Goldstein-Greenwood", email = "jacobgg@virginia.edu", role = c("cre", "aut")),
     person("Michele", "Claibourn", email = "mclaibourn@virginia.edu", role = "aut"))
-Description: Tools for cleaning (primarily) bureaucratic data like court records. These functions are designed
-    to solve problems commonly encountered in the UVA Equity Center's data-cleaning work.
+Description: Tools for cleaning (primarily) bureaucratic data like court records.
+    These functions are designed to solve problems commonly encountered in the UVA
+    Equity Center's data-cleaning work.
 License: Temporarily-Private
 Encoding: UTF-8
 LazyData: true
