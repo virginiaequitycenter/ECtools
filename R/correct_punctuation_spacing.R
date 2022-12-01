@@ -6,7 +6,8 @@
 #' the \code{punctuation} argument. For example, "SMITH ,JANE" would be corrected to "SMITH, JANE" (assuming that a comma
 #' is included among the designated punctuation marks via the \code{punctuation} argument. The \code{punctuation} argument has
 #' a default value of \code{c(',', ';', ':')}. Before correcting spacing around the designated marks, the function checks whether
-#' each entry in the \code{punctuation} argument is indeed a punctuation mark, and it will remove any that are not identified as such (and alert the user via a warning).
+#' each entry in the \code{punctuation} argument is actually a punctuation mark; it will remove any that are not punctuation marks
+#' and will alert the user via a warning.
 #'
 #' @param name A character vector containing one or more strings in which to correct spacing around punctuation marks.
 #' @param punctuation A character vector containing punctuation marks to correct spacing around; \code{c(',', ';', ':')} is default.
