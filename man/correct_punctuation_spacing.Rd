@@ -15,7 +15,7 @@ correct_punctuation_spacing(name, punctuation = c(",", ";", ":"))
 A character vector.
 }
 \description{
-Eliminate spaces before and ensures spaces after designated punctuation marks.
+Eliminates spaces before and ensures spaces after designated punctuation marks.
 }
 \details{
 \code{correct_punctuation_spacing()} eliminates spaces before and ensures spaces after punctuation marks declared in

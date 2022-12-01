@@ -1,6 +1,6 @@
 #' \code{correct_punctuation_spacing()}
 #'
-#' @description Eliminate spaces before and ensures spaces after designated punctuation marks.
+#' @description Eliminates spaces before and ensures spaces after designated punctuation marks.
 #'
 #' @details \code{correct_punctuation_spacing()} eliminates spaces before and ensures spaces after punctuation marks declared in
 #' the \code{punctuation} argument. For example, "SMITH ,JANE" would be corrected to "SMITH, JANE" (assuming that a comma

@@ -27,11 +27,13 @@ extract_year <- function(dates, expect_modern = TRUE, if_multiple = 'last') {
     dates <- as.character(dates)
   }
   if ((expect_modern %in% c(TRUE, FALSE)) == F) {
-    warning("expect_modern is not TRUE or FALSE; defaulting to TRUE", call. = F)
+    warning("expect_modern is not TRUE or FALSE; defaulting to TRUE",
+            call. = F, immediate. = TRUE)
     expect_modern <- TRUE
   }
   if (grepl(x = if_multiple, pattern = '^(?i)(first|last)$') == F) {
-    warning("if_multiple is not one of 'first' or 'last'; defaulting to 'last'", call. = F)
+    warning("if_multiple is not one of 'first' or 'last'; defaulting to 'last'",
+            call. = FALSE, immediate. = TRUE)
     if_multiple <- 'last'
   }
   pattern <- ifelse(expect_modern == TRUE, '(19|20)\\d{2}', '\\d{4}')

@@ -32,7 +32,8 @@
 #' @export
 assign_quarter <- function(dates, format = NA, return_QX = TRUE) {
   if ((return_QX %in% c(TRUE, FALSE)) == FALSE) {
-    warning("return_QX is not TRUE or FALSE; defaulting to TRUE", call. = FALSE)
+    warning("return_QX is not TRUE or FALSE; defaulting to TRUE",
+            call. = FALSE, immediate. = TRUE)
     return_QX <- TRUE
   }
 
