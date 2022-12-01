@@ -13,7 +13,7 @@ extract_zip(address, if_multiple = "last", must_follow_state = TRUE)
 \code{'last'}, or \code{'all'}? Case-insensitive; \code{'last'} is default.}
 
 \item{must_follow_state}{If \code{TRUE}, only match five-digit ZIP Codes that follow US state names or abbreviations
-(case-insensitive); \code{TRUE} is default.}
+(case-insensitive). \code{TRUE} is default.}
 }
 \value{
 A vector.
@@ -26,7 +26,7 @@ Extracts five-digit ZIP Codes from addresses.
 ZIP Codes in the address vector can either be five-digit or nine-digit; only five-digit ZIP Codes will be returned.
 If multiple candidate ZIP Codes are identified for a given address string, the \code{if_multiple} argument governs which is returned
 ('first', 'last', or 'all'; 'last' is default; if 'all', multiple candidate ZIPs for a given string are returned separated by ' | ').
-The function can be set to only return ZIP Codes following US state names and abbreviations.
+By default, the function only identifies ZIP Codes following US state names and abbreviations.
 }
 \examples{
 addresses <- c('NORFOLK, VA 23501',
@@ -36,6 +36,8 @@ addresses <- c('NORFOLK, VA 23501',
 extract_zip(addresses, if_multiple = 'last', must_follow_state = TRUE)
 # Extract all ZIP Codes in each string:
 extract_zip(addresses, if_multiple = 'all', must_follow_state = TRUE)
-# With must_follow_state set to FALSE, 11111 and 22222 are errantly picked up in the last string:
+# With must_follow_state set to FALSE, 11111 and 22222 are
+# errantly picked up in the last string:
+extract_zip(addresses, if_multiple = 'all', must_follow_state = FALSE)
 
 }
