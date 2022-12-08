@@ -22,7 +22,8 @@ Eliminates spaces before and ensures spaces after designated punctuation marks.
 the \code{punctuation} argument. For example, "SMITH ,JANE" would be corrected to "SMITH, JANE" (assuming that a comma
 is included among the designated punctuation marks via the \code{punctuation} argument. The \code{punctuation} argument has
 a default value of \code{c(',', ';', ':')}. Before correcting spacing around the designated marks, the function checks whether
-each entry in the \code{punctuation} argument is indeed a punctuation mark, and it will remove any that are not identified as such (and alert the user via a warning).
+each entry in the \code{punctuation} argument is actually a punctuation mark; it will remove any that are not punctuation marks
+and will alert the user via a warning.
 }
 \examples{
 correct_punctuation_spacing(c('SMITH ,JANE', 'SMITH,JANE', 'SMITH , JANE'),
