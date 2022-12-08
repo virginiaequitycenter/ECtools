@@ -23,7 +23,7 @@ expand_shorthand <- function(to_expand, type = 'housing', case_out = 'upper') {
   }
 
   if ((case_out %in% c('upper', 'lower')) == F) {
-    warning('case_out argument is not one of upper or lower; defaulting to upper.',
+    warning("case_out argument is not one of 'upper' or 'lower'; defaulting to 'upper'",
             call. = FALSE, immediate. = TRUE)
     case_out <- 'upper'
   }

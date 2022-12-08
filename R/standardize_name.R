@@ -32,7 +32,7 @@ standardize_name <- function(name, case_out = 'upper') {
     name <- as.character(name)
   }
   if ((case_out %in% c('upper', 'lower')) == F) {
-    warning('case_out argument is not upper or lower; defaulting to upper.',
+    warning("case_out argument is not 'upper' or 'lower'; defaulting to 'upper'",
             call. = FALSE, immediate. = TRUE)
     case_out <- 'upper'
   }
