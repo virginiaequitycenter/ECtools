@@ -7,13 +7,12 @@
 #' If multiple candidate ZIP Codes are identified for a given address string, the \code{if_multiple} argument governs which is returned
 #' (\code{'first'}, \code{'last'}, or \code{'all'}; \code{'first'} is default; if \code{'all'}, multiple candidate ZIPs for a given string are returned separated by \code{' | '}).
 #' Specified ZIP Codes can be optionally converted to \code{NA} if extracted (by default, the common placeholders \code{'00000'} and \code{'99999'} are converted to \code{NA}).
-#' By default, the function only identifies ZIP Codes that follow US state names or abbreviations.
+#' By default, the function only identifies ZIP Codes that follow US state names or abbreviations (including DC).
 #'
 #' @param address A vector containing one or more address strings from which to extract ZIP Codes. Character or character-coercible.
 #' @param if_multiple If multiple candidate ZIP Codes are detected in a string, which should be returned, \code{'first'},
 #' \code{'last'}, or \code{'all'}? Case-insensitive; \code{'first'} is default.
-#' @param must_follow_state If \code{TRUE}, only match five-digit ZIP Codes that follow US state names or abbreviations
-#' (case-insensitive). \code{TRUE} is default.
+#' @param must_follow_state If \code{TRUE}, only extract five-digit ZIP Codes that follow (case-insensitive) US state names or abbreviations (including DC). \code{TRUE} is default.
 #' @param auto_NA A vector containing ZIP Codes that should be converted to \code{NA} if extracted.
 #' The common placeholders \code{'00000'} and \code{'99999'} are the default. Set to \code{NA} to convert no ZIPs to \code{NA}.
 #'
@@ -55,7 +54,7 @@ extract_zip <- function(address, if_multiple = 'first', must_follow_state = TRUE
   pattern <- ifelse(must_follow_state == FALSE,
                     '\\d{5}',
                     paste0('(?<=(?i)(',
-                           paste0(paste0(datasets::state.abb, collapse = '|'), '|', paste0(datasets::state.name, collapse = '|')),
+                           paste0(paste0(datasets::state.abb, collapse = '|'), '|', paste0(datasets::state.name, collapse = '|'), '|DC|District of Columbia'),
                            ') )\\d{5}'))
 
   zips <- stringi::stri_extract(str = address, regex = pattern, mode = tolower(if_multiple))

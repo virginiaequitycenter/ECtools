@@ -17,8 +17,7 @@ extract_zip(
 \item{if_multiple}{If multiple candidate ZIP Codes are detected in a string, which should be returned, \code{'first'},
 \code{'last'}, or \code{'all'}? Case-insensitive; \code{'first'} is default.}
 
-\item{must_follow_state}{If \code{TRUE}, only match five-digit ZIP Codes that follow US state names or abbreviations
-(case-insensitive). \code{TRUE} is default.}
+\item{must_follow_state}{If \code{TRUE}, only extract five-digit ZIP Codes that follow (case-insensitive) US state names or abbreviations (including DC). \code{TRUE} is default.}
 
 \item{auto_NA}{A vector containing ZIP Codes that should be converted to \code{NA} if extracted.
 The common placeholders \code{'00000'} and \code{'99999'} are the default. Set to \code{NA} to convert no ZIPs to \code{NA}.}
@@ -35,7 +34,7 @@ ZIP Codes in the address vector can be either five-digit or nine-digit (hyphenat
 If multiple candidate ZIP Codes are identified for a given address string, the \code{if_multiple} argument governs which is returned
 (\code{'first'}, \code{'last'}, or \code{'all'}; \code{'first'} is default; if \code{'all'}, multiple candidate ZIPs for a given string are returned separated by \code{' | '}).
 Specified ZIP Codes can be optionally converted to \code{NA} if extracted (by default, the common placeholders \code{'00000'} and \code{'99999'} are converted to \code{NA}).
-By default, the function only identifies ZIP Codes that follow US state names or abbreviations.
+By default, the function only identifies ZIP Codes that follow US state names or abbreviations (including DC).
 }
 \examples{
 addresses <- c('NORFOLK, VA 23501',
