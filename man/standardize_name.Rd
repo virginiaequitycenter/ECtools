@@ -26,7 +26,7 @@ The function:
   \item Converts dashes and forward slashes to spaces
   \item Removes the following characters: . ; ( ) [ ] { } # : _
   \item Removes errant commas at the ends of strings
-  \item Converts at signs and ampersands to "at" and "and"
+  \item Converts at signs and ampersands to "at" and "and" (and forces surrounding spaces)
   \item Eliminates excess white spaces (e.g., errant double-spaces)
 }
 }

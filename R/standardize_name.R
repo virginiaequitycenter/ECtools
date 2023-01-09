@@ -10,7 +10,7 @@
 #'   \item Converts dashes and forward slashes to spaces
 #'   \item Removes the following characters: . ; ( ) [ ] { } # : _
 #'   \item Removes errant commas at the ends of strings
-#'   \item Converts at signs and ampersands to "at" and "and"
+#'   \item Converts at signs and ampersands to "at" and "and" (and forces surrounding spaces)
 #'   \item Eliminates excess white spaces (e.g., errant double-spaces)
 #' }
 #'
@@ -38,20 +38,20 @@ standardize_name <- function(name, case_out = 'upper') {
   }
 
   cat(paste0('Names are standardized by:\n',
-             '\tRemoving leading and trailing spaces ("SMITH, MARY" \u2192 "SMITH, MARY")\n',
+             '\tRemoving leading and trailing spaces (" SMITH, MARY " \u2192 "SMITH, MARY")\n',
              '\tConverting dashes and forward slashes to single spaces ("-" and "/" \u2192 " ")\n',
              '\tRemoving the following characters: . ; ( ) [ ] { } # : _\n',
              '\tRemoving errant commas at the ends of strings ("ABC," \u2192 "ABC")\n',
-             '\tConverting @ signs to "at"\n',
-             '\tConverting ampersands (&) to "and"\n',
+             '\tConverting @ signs to "at" (and forcing surrounding spaces)\n',
+             '\tConverting ampersands (&) to "and" (and forcing surrounding spaces)\n',
              '\tConverting all instances of >1 space to single spaces ("  " \u2192 " ")\n'))
 
   name <- gsub(x = name, pattern = '^\\s{1,}|\\s{1,}$', replacement = '') |>
     gsub(x = _, pattern = '\\-|\\/', replacement = ' ') |>
     gsub(x = _, pattern = '\\.|\\;|\\(|\\)|\\[|\\]|\\{|\\}|\\#|\\:|\\_', replacement = '') |>
     gsub(x = _, pattern = '\\,$', replacement = '') |>
-    gsub(x = _, pattern = '\\@', replacement = 'at') |>
-    gsub(x = _, pattern = '\\&', replacement = 'and') |>
+    gsub(x = _, pattern = '\\@', replacement = ' at ') |>
+    gsub(x = _, pattern = '\\&', replacement = ' and ') |>
     gsub(x = _, pattern = '\\s{2,}', replacement = ' ')
 
   if (case_out == 'upper') {
