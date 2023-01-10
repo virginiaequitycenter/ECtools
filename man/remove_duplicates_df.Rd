@@ -4,24 +4,32 @@
 \alias{remove_duplicates_df}
 \title{\code{remove_duplicates_df()}}
 \usage{
-remove_duplicates_df(dat, column_names)
+remove_duplicates_df(dat, column_names, save_removed_rows_as = "removed")
 }
 \arguments{
 \item{dat}{A data frame.}
 
 \item{column_names}{A character vector containing column names on which to base the assessment of row duplication.
 If \code{NULL}, \code{column_names} is set to \code{colnames(dat)}.}
+
+\item{save_removed_rows_as}{The name of the data frame in which to save removed (duplicate) rows. \code{NULL} or a character vector with a length of one.}
 }
 \value{
 A data frame.
 }
 \description{
-Removes duplicate rows from a data frame, determined based on a user-declared set of columns.
+Removes duplicate rows from a data frame (determined based on a user-declared set of columns) and, optionally,
+saves the removed rows to a data frame.
 }
 \details{
 \code{remove_duplicates_df()} uses a user-declared set of variables to determine which rows in a data frame
-are duplicates of others, and it removes all but the first instance of each duplicated row.
-In effect, it's \code{dplyr::distinct(dat, var1, var2, ...)} with a bit more information in the output.
+are duplicates of others, and it removes all but the first instance of each duplicated row. The removed rows can be
+saved to a data frame (determined by the \code{save_removed_rows_as} argument), which is saved to the global environment.
+If the \code{save_removed_rows_as} argument is \code{NULL}, the removed rows are not saved. The function checks if the name
+given in \code{save_removed_rows_as} is the name of an object in the global environment already, and if so, it
+appends five random numbers to the end of the data frame's name.
+In effect, \code{remove_duplicates_df()}  is \code{dplyr::distinct(dat, var1, var2, ...)} with a bit more information in
+the output and the ability to save removed rows to a data frame.
 }
 \examples{
 d <- data.frame(year = c(1999, 1999, 1999, 1999),
