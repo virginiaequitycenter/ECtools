@@ -30,12 +30,18 @@ correct_punctuation_spacing <- function(name, punctuation = c(',', ';', ':')) {
   }
 
   is_punctuation <- grepl(x = punctuation, pattern = '^[[:punct:]]$')
-  if (all(is_punctuation) == FALSE) {
-    warning(paste0('All entries in punctuation argument must be punctuation marks\n',
-                   '\tRemoving from punctuation argument: ', paste0(punctuation[is_punctuation == F], collapse = ' '), '\n',
-                   '\tKeeping in punctuation argument: ', paste0(punctuation[is_punctuation], collapse = ' ')),
-            call. = FALSE, immediate. = TRUE)
-    punctuation <- punctuation[is_punctuation]
+  if (FALSE %in% is_punctuation) {
+    if (all(is_punctuation == FALSE)) {
+      warning("No entries in punctuation argument are punctuation marks\nDefaulting to c(',', ';', ':')",
+              call. = FALSE, immediate. = TRUE)
+      punctuation <- c(',', ';', ':')
+    } else {
+      warning(paste0('All entries in punctuation argument must be punctuation marks\n',
+                     '\tRemoving from punctuation argument: ', paste0(punctuation[is_punctuation == F], collapse = ' '), '\n',
+                     '\tKeeping in punctuation argument: ', paste0(punctuation[is_punctuation], collapse = ' ')),
+              call. = FALSE, immediate. = TRUE)
+      punctuation <- punctuation[is_punctuation]
+    }
   }
 
   punctuation_pattern <- paste0('(\\', paste0(punctuation, collapse = '|\\'), ')')
@@ -45,7 +51,7 @@ correct_punctuation_spacing <- function(name, punctuation = c(',', ';', ':')) {
              '\tEnsuring spaces after the designated punctuation marks (e.g., "SMITH,JANE" --> "SMITH, JANE")\n'))
 
   name <- gsub(x = name, pattern = paste0(punctuation_pattern, '(\\S)'), replacement = '\\1 \\2') |>
-    gsub(x = _, pattern =   paste0('(\\S)(\\s{1,})', punctuation_pattern), replacement = '\\1\\3')
+    gsub(x = _, pattern = paste0('(\\S)(\\s{1,})', punctuation_pattern), replacement = '\\1\\3')
 
   name
 }
