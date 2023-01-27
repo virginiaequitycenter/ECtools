@@ -1,8 +1,8 @@
-#' \code{identify_non_residential_names()}
+#' \code{identify_non_residential()}
 #'
 #' @description Identifies non-residential names ("La Sucre Bakery" vs. "Jan La Sucre") based on an extensive regex pattern.
 #'
-#' @details \code{identify_non_residential_names()} applies a regex pattern to a character vector containing one or more names, returning
+#' @details \code{identify_non_residential()} applies a regex pattern to a character vector containing one or more names, returning
 #' \code{TRUE} and \code{FALSE} for each element. The regex pattern used by default is taken from the GitHub repo jacob-gg/non-person-regex.
 #' A user can, optionally, use a different regex by setting the \code{use_alt_regex} argument to \code{TRUE} and declaring
 #' a connection; this, however, is usually not desired.
@@ -15,10 +15,10 @@
 #'
 #' @examples
 #' example_names <- c('JANE SMITH', 'JANE SMITH APARTMENTS', 'AMERICANO CAFE')
-#' identify_non_residential_names(example_names)
+#' identify_non_residential(example_names)
 #'
 #' @export
-identify_non_residential_names <- function(name, use_alt_regex = FALSE) {
+identify_non_residential <- function(name, use_alt_regex = FALSE) {
   if (is.character(name) == F) {
     name <- as.character(name)
   }
