@@ -8,7 +8,6 @@ Authors@R: c(
 Description: Tools for cleaning (primarily) bureaucratic data like court records.
     These functions are designed to solve problems commonly encountered in the UVA
     Equity Center's data-cleaning work.
-License: Temporarily-Private
 Encoding: UTF-8
 LazyData: true
 Imports:

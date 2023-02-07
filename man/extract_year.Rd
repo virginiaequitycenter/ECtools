@@ -4,7 +4,12 @@
 \alias{extract_year}
 \title{\code{extract_year()}}
 \usage{
-extract_year(dates, expect_modern = TRUE, if_multiple = "last")
+extract_year(
+  dates,
+  expect_modern = TRUE,
+  if_multiple = "last",
+  return_numeric = FALSE
+)
 }
 \arguments{
 \item{dates}{A vector containing one or more dates from which to extract years. Date or character class.}
@@ -13,6 +18,8 @@ extract_year(dates, expect_modern = TRUE, if_multiple = "last")
 
 \item{if_multiple}{If multiple year candidates are detected in a string, which should be returned, the first or the last?
 \code{'first'} or \code{'last'}, case-insensitive; \code{'last'} is default.}
+
+\item{return_numeric}{If \code{FALSE}, years are returned as character strings; if \code{TRUE}, years are returned as numeric values.}
 }
 \value{
 A character vector.
