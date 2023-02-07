@@ -55,7 +55,7 @@ extract_zip <- function(address, if_multiple = 'first', must_follow_state = TRUE
                     '\\d{5}',
                     paste0('(?<=(?i)(',
                            paste0(paste0(datasets::state.abb, collapse = '|'), '|', paste0(datasets::state.name, collapse = '|'), '|DC|District of Columbia'),
-                           ') )\\d{5}'))
+                           ')\\.? )\\d{5}'))
 
   zips <- stringi::stri_extract(str = address, regex = pattern, mode = tolower(if_multiple))
 
