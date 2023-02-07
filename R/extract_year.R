@@ -12,7 +12,6 @@
 #' @param expect_modern Only extract 19XY and 20XY years? \code{TRUE} or \code{FALSE}; \code{TRUE} is default.
 #' @param if_multiple If multiple year candidates are detected in a string, which should be returned, the first or the last?
 #' \code{'first'} or \code{'last'}, case-insensitive; \code{'last'} is default.
-#' @param return_numeric If \code{FALSE}, years are returned as character strings; if \code{TRUE}, years are returned as numeric values.
 #'
 #' @return A character vector.
 #'
@@ -23,7 +22,7 @@
 #' extract_year(dates, expect_modern = TRUE, if_multiple = 'last')
 #'
 #' @export
-extract_year <- function(dates, expect_modern = TRUE, if_multiple = 'last', return_numeric = FALSE) {
+extract_year <- function(dates, expect_modern = TRUE, if_multiple = 'last') {
   if ((is.character(dates) | inherits(dates, what = 'Date')) == F) {
     dates <- as.character(dates)
   }
@@ -37,14 +36,6 @@ extract_year <- function(dates, expect_modern = TRUE, if_multiple = 'last', retu
             call. = FALSE, immediate. = TRUE)
     if_multiple <- 'last'
   }
-  if ((return_numeric %in% c(TRUE, FALSE)) == F) {
-    warning("return_numeric is not TRUE or FALSE; defaulting to FALSE",
-            call. = F, immediate. = TRUE)
-    return_numeric <- FALSE
-  }
-
   pattern <- ifelse(expect_modern == TRUE, '(19|20)\\d{2}', '\\d{4}')
-  years <- stringi::stri_extract(str = dates, regex = pattern, mode = tolower(if_multiple))
-
-  ifelse(return_numeric == TRUE, as.numeric(years), years)
+  stringi::stri_extract(str = dates, regex = pattern, mode = tolower(if_multiple))
 }
