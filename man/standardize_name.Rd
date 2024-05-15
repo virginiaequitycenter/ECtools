@@ -18,7 +18,7 @@ A character vector.
 Standardizes names by removing or transforming various special characters and by eliminating excess white space.
 }
 \details{
-\code{standardize_name()} performs several regex standardization procedures to reduce variability in the formatting of names.
+\code{standardize_name()} performs several regular-expression standardization procedures to reduce variability in the formatting of names.
 The function:
 
 \itemize{
@@ -33,8 +33,8 @@ The function:
 \examples{
 standardize_name(c(' _MAGNOLIA-&-FIR_ #COMPANY#     L.L.C.,',
                    '{MAGNOLIA} /AND/ (F)(I)(R) [COMPANY]... LLC, ',
-                   'SMITH, MARY-JANE A.',
-                   'SMITH, MARY JANE A,'),
-                 case_out = 'abc')
+                   'SMITH, LILY-MAY A.',
+                   'SMITH, LILY MAY A,'),
+                 case_out = 'upper')
 
 }

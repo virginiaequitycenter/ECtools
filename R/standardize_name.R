@@ -2,7 +2,7 @@
 #'
 #' @description Standardizes names by removing or transforming various special characters and by eliminating excess white space.
 #'
-#' @details \code{standardize_name()} performs several regex standardization procedures to reduce variability in the formatting of names.
+#' @details \code{standardize_name()} performs several regular-expression standardization procedures to reduce variability in the formatting of names.
 #' The function:
 #'
 #' \itemize{
@@ -22,9 +22,9 @@
 #' @examples
 #' standardize_name(c(' _MAGNOLIA-&-FIR_ #COMPANY#     L.L.C.,',
 #'                    '{MAGNOLIA} /AND/ (F)(I)(R) [COMPANY]... LLC, ',
-#'                    'SMITH, MARY-JANE A.',
-#'                    'SMITH, MARY JANE A,'),
-#'                  case_out = 'abc')
+#'                    'SMITH, LILY-MAY A.',
+#'                    'SMITH, LILY MAY A,'),
+#'                  case_out = 'upper')
 #'
 #' @export
 standardize_name <- function(name, case_out = 'upper') {
